@@ -15,18 +15,17 @@ public class PrintSystem : MonoBehaviour
     private bool canSpawn;
     public int spawnCapacity;
     public int pointIndex;
+
     void Start()
     {
         for (int i = 0; i < tablePoints.Length; i++)
         {
             tablePoints[i] = transform.GetChild(2).GetChild(i);
         }
+
         StartCoroutine(SpawnPaper());
     }
-    void Update()
-    {
-        
-    }
+
     IEnumerator SpawnPaper()
     {
         while (true)
@@ -39,14 +38,16 @@ public class PrintSystem : MonoBehaviour
             {
                 canSpawn = false;
             }
-            
+
             if (canSpawn)
             {
-                GameObject newPaper = Instantiate(paperPrefab, spawnPoint.position, Quaternion.identity,transform.GetChild(0).transform);
+                GameObject newPaper = Instantiate(paperPrefab, spawnPoint.position, Quaternion.identity,
+                    transform.GetChild(0).transform);
 
-                newPaper.transform.DOJump(new Vector3(tablePoints[pointIndex].position.x, tablePoints[pointIndex].position.y + yAxis,
+                newPaper.transform.DOJump(new Vector3(tablePoints[pointIndex].position.x,
+                    tablePoints[pointIndex].position.y + yAxis,
                     tablePoints[pointIndex].position.z), 1f, 1, .5f).SetEase(Ease.OutQuad);
-            
+
                 spawnedPapers.Add(newPaper);
 
                 if (pointIndex < 13)

@@ -22,7 +22,7 @@ public class StackSystem : MonoBehaviour
     public RectTransform upgradePanel;
 
     public GameObject paperPrefab;
-
+    
     private void Awake()
     {
         Instance = this;

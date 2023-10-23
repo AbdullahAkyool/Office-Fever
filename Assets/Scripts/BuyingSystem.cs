@@ -15,7 +15,7 @@ public class BuyingSystem : MonoBehaviour
     public TMP_Text productPriceText; 
     void Start()
     {
-        productPriceText.text = productPrice.ToString();
+        productPriceText.text = productPrice + "$";
     }
 
     // Update is called once per frame
